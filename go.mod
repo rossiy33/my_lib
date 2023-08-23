@@ -1,3 +1,3 @@
-module my_lib
+module github.com/rossiy33/my_lib
 
 go 1.20
