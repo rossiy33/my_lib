@@ -36,17 +36,15 @@ func JsonToJson(url string, jm JsonMap) (result JsonMap, err error) {
 	}
 
 	// JSONをmapにデコード、できなかったらbodyに入れる
-	//var result JsonMap
-	//if err := json.Unmarshal(body, &result); err != nil {
-	//	log.Fatal(err)
-	//}
 	err = json.Unmarshal(body, &result)
 	if err != nil {
+		if body == nil {
+			return
+		}
 		result = JsonMap{}
 		result["body"] = string(body)
 		err = nil
 	}
 
-	//return result
 	return
 }
