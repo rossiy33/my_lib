@@ -3,6 +3,7 @@ package api
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 )
@@ -17,21 +18,22 @@ func JsonToJson(url string, jm JsonMap) (result JsonMap, err error) {
 		var j []byte
 		j, err = json.Marshal(jm)
 		if err != nil {
-			//log.Fatal(err)
 			return
 		}
 		resp, err = http.Post(url, "application/json", bytes.NewBuffer(j))
 	}
 	defer resp.Body.Close()
 	if err != nil {
-		//log.Fatal(err)
 		return
 	}
 
 	// レスポンスのBodyを読み取り
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		//log.Fatal(err)
+		return
+	}
+	if body == nil {
+		err = errors.New("null body")
 		return
 	}
 
