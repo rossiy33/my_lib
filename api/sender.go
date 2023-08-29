@@ -22,6 +22,10 @@ func JsonToJson(url string, jm JsonMap) (result JsonMap, err error) {
 		}
 		resp, err = http.Post(url, "application/json", bytes.NewBuffer(j))
 	}
+	if resp == nil {
+		err = errors.New("null resp")
+		return
+	}
 	if resp.Body == nil {
 		err = errors.New("null resp.Body")
 		return
