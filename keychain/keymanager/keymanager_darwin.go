@@ -4,7 +4,7 @@
 package keymanager
 
 import (
-	"keychain/lib"
+	"github.com/rossiy33/my_lib/keychain/lib"
 	"os/exec"
 	"strings"
 )

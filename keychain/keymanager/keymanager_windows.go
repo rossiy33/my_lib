@@ -5,7 +5,7 @@ package keymanager
 
 import (
 	"github.com/danieljoos/wincred"
-	"keychain/lib"
+	"github.com/rossiy33/my_lib/keychain/lib"
 )
 
 type KeyManager struct{}
